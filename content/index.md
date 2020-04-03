@@ -4,24 +4,10 @@ title: "Min fina titel"
 Min me-sida i kursen oophp
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/index.md`.
+[FIGURE src="image/me1.jpg?w=300&h=400&cf&sharpen" class="right" caption="Bild på mig."]
 
-[FIGURE src="image/me.jpg?w=400&a=4,27,11,0&cf&sharpen" class="right" caption="Bild på mig, ätandes glass och hållandes ett kort på någon jultillställning."]
+Mitt namn är Martin Lindström, jag är född och uppvuxen i södra Skåne. Jag är född i Brantevik, där jag bodde tills jag var 6 år gammal och flyttade sedan till Borrby där jag har bott fram tills nu när jag började studera, nu bor jag i en liten etta på Trossö i Karlskrona.
 
-Detta är min me-sida i kursen. Denna sidan innehåller en presentation av mig själv. Underhåll denna sidan under hela kursen och uppdatera den efter hand och behov.
+Några av mina intressen när jag var yngre var tv spel och skateboard, något som fortfarande sitter i (längesedan jag åkte skateboard dock). När det var dags för gymnasiet så bestämde jag mig för att läsa byggprogrammet som snickare på Parkskolan i Ystad eftersom jag trodde att det skulle vara något för mig. Det var det inte.
 
-Så, en presentation en bra början. Skriv några ord om dig själv. Jag börjar.
-
-Mitt namn är Mikael Roos. Född och uppvuxen i Bankeryd, Småland, strax utanför Jönköping, i ett villaområde som byggdes upp samtidigt som vi flyttade in där. Jag gillade landhockey och har spelat bandy och hockey samt gått bowlinggymnasiet i Nässjö. Jag har varit städare, diskare, kallskänka, servitör och kock. På ett bananskal landade jag i Ronneby när jag började högskolan 1990 där och nu är jag kvar med fru, barn och så vidare.
-
-Programmering har alltid intresserat mig sedan 13-årsåldern och min första dator var en Spectravideo 328 med bandspelare.
-
-Om jag skall nämna någon hobby, förutom webbprogrammering, så får det bli att bära sten på sommarstugetomten, och det finns sten så det räcker och blir över.
-
-Till och från får jag för mig att börja på lite hobbies, ett år satsade jag på pokerspel, ett annat år var det geocaching, sedan turfing och nu på sistone verkar släktforskning lite spännande. Annars kan jag alltid koda på något av mina opensource-projekt, det finns och blir över.
-
-Vill du läsa mer om vad jag jobbat med så kan du kika på min [Linkedin-profil](https://www.linkedin.com/in/pt90mr/).
-
-Vi syns och hörs i forum och chatt!
-
-/Mikael
+Jag har jobbat kort som byggare och har även jobbat några år i en fabrik där vi producera vegansk mat. Där jobbade jag först med att packa och palla produkten och blev sedan 'blandare' och blandade då smeten som produkterna gjordes av. När jag blev trött på det jobbet så kom jag fram till att jag vill jobba med något som intresserar mig och eftersom jag hade gjort några tutorials och tittat lite på html/css och javascript sedan tidigare och tyckte det verkade roligt, speciellt problemlösningen, så fick det bli webbprogrammering. När det kommer till hobbies så får jag väl säga att spelandet tar upp mest av min fritid, både på pc och på ps4. Jag ska försöka att bli mer aktiv med skateboard åkningen och kanske börja styrketräna? Vi får se.
