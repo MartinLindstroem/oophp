@@ -3,4 +3,4 @@
 /vendor
 memory::
 composer.lock
-/doc
+doc/
