@@ -12,8 +12,8 @@ namespace Anax\View;
 
 
 
-?><h1>Dice 100!!1</h1>
-
+?><h1>Dice 100!!</h1>
+<div class="gameArea" style="width: 50%; display: inline-block;">
 <p>Roll the dice. First to 100 points win.</p>
 <p>Current player: <b><?= $activePlayer ?></b> </p>
 
@@ -52,3 +52,8 @@ namespace Anax\View;
         <input type="submit" name="restart" value="Play again">
     </form>
 <?php endif; ?>
+</div>
+<div class="histogramArea" style="float: right; border: 1px solid black; padding: 10px; width: 30%">
+    <h3>Histogram</h3>
+    <pre><?= $histogram->printHistogram(); ?></pre>
+</div>

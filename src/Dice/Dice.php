@@ -15,6 +15,8 @@ class Dice
      *
      */
     private $number;
+    private $sides;
+    // private $rolls;
 
 
     /**
@@ -22,9 +24,11 @@ class Dice
      *
      */
 
-    public function __construct(int $number = -1)
+    public function __construct(int $number = -1, int $sides = 6)
     {
         $this->number = $number;
+        $this->sides = $sides;
+        // $this->rolls = [];
     }
 
 
@@ -37,6 +41,8 @@ class Dice
     public function roll()
     {
         $this->number = rand(1, 6);
+        // $this->rolls[] = $this->number;
+        // array_push($this->rolls, $this->number);
     }
 
 
@@ -58,4 +64,17 @@ class Dice
     {
         $this->number = $num;
     }
+
+
+
+    public function getSides()
+    {
+        return $this->sides;
+    }
+
+
+    // public function getRolls()
+    // {
+    //     return $this->rolls;
+    // }
 }

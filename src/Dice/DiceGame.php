@@ -7,8 +7,10 @@ namespace Marty\Dice;
  * handles the game logic
  */
 
-class DiceGame
+class DiceGame implements HistogramInterface
 {
+
+    use HistogramTrait;
      /**
       * Constructor to initiate the object,
       *
@@ -19,6 +21,7 @@ class DiceGame
         $this->player = new DiceHand();
         $this->computer = new DiceHand();
         $this->computerRolls = [];
+        // $this->previousRolls;
     }
 
 
@@ -32,8 +35,10 @@ class DiceGame
     {
         if ($player == "player") {
             $this->player->rollDice();
+            array_push($this->serie, $this->player->dice->getNumber());
         } else {
             $this->computer->rollDice();
+            array_push($this->serie, $this->computer->dice->getNumber());
         }
     }
 
@@ -41,14 +46,21 @@ class DiceGame
 
     /**
      * Function to simulate the computers play turn. Computer rolls the dice
-     * between 2 and 4 times.
+     * a number of times depending on the scores.
      * appends the dice values to the computerRolls array.
      */
     public function simComputer()
     {
         $this->computerRolls = [];
-        $nrOfRolls = rand(2, 4);
-        // $start = 0;
+
+        if ($this->player->getTotalScore() >= $this->computer->getTotalScore() + 30) {
+            $nrOfRolls = rand(5, 7);
+        } elseif ($this->player->getTotalScore() >= $this->computer->getTotalScore() + 20) {
+            $nrOfRolls = rand(4, 5);
+        } else {
+            $nrOfRolls = rand(2, 4);
+        }
+
         for ($i=0; $i < $nrOfRolls; $i++) {
             $this->rollDice("computer");
             if ($this->computer->dice->getNumber() == 1) {
@@ -58,4 +70,14 @@ class DiceGame
             array_push($this->computerRolls, $this->computer->dice->getNumber());
         }
     }
+
+
+
+    // public function getRolls()
+    // {
+    //     // return array_merge($this->player->dice->getRolls(), $this->computer->dice->getRolls());
+    //     $this->previousRolls = array_merge($this->player->dice->getRolls(), $this->computer->dice->getRolls());
+    //     return $this->previousRolls;
+    //
+    // }
 }
