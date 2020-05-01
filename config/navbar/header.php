@@ -68,5 +68,10 @@ return [
             "url" => "dice-game",
             "title" => "Spela tärning 100",
         ],
+        [
+            "text" => "Tärning 100(v2)",
+            "url" => "dice1/init",
+            "title" => "Spela tärning 100",
+        ],
     ],
 ];

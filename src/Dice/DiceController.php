@@ -157,5 +157,4 @@ class DiceController implements AppInjectableInterface
 
         return $this->app->response->redirect("dice1/play");
     }
-
 }

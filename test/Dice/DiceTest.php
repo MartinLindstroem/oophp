@@ -66,4 +66,18 @@ class DiceTest extends TestCase
         $exp = 4;
         $this->assertEquals($exp, $res);
     }
+
+
+
+    /**
+     * Verify that the number of sides on the die
+     * can be gotten.
+     */
+    public function testGetDiceSides()
+    {
+        $dice = new Dice();
+        $res = $dice->getSides();
+        $exp = 6;
+        $this->assertEquals($exp, $res);
+    }
 }

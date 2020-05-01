@@ -66,7 +66,10 @@ class Dice
     }
 
 
-
+    /**
+     * Returns the number of sides on the die.
+     * @return int
+     */
     public function getSides()
     {
         return $this->sides;

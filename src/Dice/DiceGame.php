@@ -21,7 +21,7 @@ class DiceGame implements HistogramInterface
         $this->player = new DiceHand();
         $this->computer = new DiceHand();
         $this->computerRolls = [];
-        // $this->previousRolls;
+        $this->nrOfRolls = 0;
     }
 
 
@@ -54,14 +54,14 @@ class DiceGame implements HistogramInterface
         $this->computerRolls = [];
 
         if ($this->player->getTotalScore() >= $this->computer->getTotalScore() + 30) {
-            $nrOfRolls = rand(5, 7);
+            $this->nrOfRolls = rand(5, 7);
         } elseif ($this->player->getTotalScore() >= $this->computer->getTotalScore() + 20) {
-            $nrOfRolls = rand(4, 5);
+            $this->nrOfRolls = rand(4, 5);
         } else {
-            $nrOfRolls = rand(2, 4);
+            $this->nrOfRolls = rand(2, 4);
         }
 
-        for ($i=0; $i < $nrOfRolls; $i++) {
+        for ($i=0; $i < $this->nrOfRolls; $i++) {
             $this->rollDice("computer");
             if ($this->computer->dice->getNumber() == 1) {
                 array_push($this->computerRolls, $this->computer->dice->getNumber());
@@ -72,12 +72,13 @@ class DiceGame implements HistogramInterface
     }
 
 
-
-    // public function getRolls()
-    // {
-    //     // return array_merge($this->player->dice->getRolls(), $this->computer->dice->getRolls());
-    //     $this->previousRolls = array_merge($this->player->dice->getRolls(), $this->computer->dice->getRolls());
-    //     return $this->previousRolls;
-    //
-    // }
+    /**
+     * Returns the number of rolls the computer is
+     * supposed to make.
+     * @return int
+     */
+    public function getNrOfRolls()
+    {
+        return $this->nrOfRolls;
+    }
 }

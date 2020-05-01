@@ -28,6 +28,10 @@ class DiceGameTest extends TestCase
         $res = count($diceGame->computerRolls);
         $exp = 0;
         $this->assertEquals($exp, $res);
+
+        $res = $diceGame->getNrOfRolls();
+        $exp = 0;
+        $this->assertEquals($exp, $res);
     }
 
 
@@ -73,5 +77,39 @@ class DiceGameTest extends TestCase
 
         $res = count($diceGame->computerRolls);
         $this->assertGreaterThanOrEqual(1, $res);
+    }
+
+
+
+    /**
+     * Construct object and verify that the number of rolls
+     * is correct.
+     */
+    public function testComputerNrOfRolls()
+    {
+        $diceGame = new DiceGame();
+        $diceGame->player->setTotalScore(50);
+        $diceGame->computer->setTotalScore(9);
+        $diceGame->simComputer();
+
+        $res = $diceGame->getNrOfRolls();
+        $this->assertGreaterThanOrEqual(5, $res);
+    }
+
+
+
+    /**
+     * Construct object and verify that the number of rolls
+     * is correct.
+     */
+    public function testComputerNrOfRolls2()
+    {
+        $diceGame = new DiceGame();
+        $diceGame->player->setTotalScore(30);
+        $diceGame->computer->setTotalScore(10);
+        $diceGame->simComputer();
+
+        $res = $diceGame->getNrOfRolls();
+        $this->assertGreaterThanOrEqual(4, $res);
     }
 }
