@@ -29,7 +29,7 @@ class MovieController implements AppInjectableInterface
      * ANY METHOD mountpoint/
      * ANY METHOD mountpoint/index
      *
-     * @return string
+     * @return object
      */
      /**
       * This will suppress Cyclomatic complexity
