@@ -73,5 +73,10 @@ return [
             "url" => "dice1/init",
             "title" => "Spela tärning 100",
         ],
+        [
+            "text" => "Movie database",
+            "url" => "movie",
+            "title" => "Movie database",
+        ],
     ],
 ];
