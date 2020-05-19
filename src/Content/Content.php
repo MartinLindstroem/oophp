@@ -11,11 +11,10 @@ class Content
 
     public function handleRoute($route, $db)
     {
-        $slugError = "";
         $filter = new \Marty\TextFilter\MyTextFilter();
         $sql = null;
         $resultset = null;
-        // $slugError = "";
+        $slug_nr = 0;
 
         switch ($route) {
             case "":
@@ -46,13 +45,9 @@ class Content
                 $this->title = "Edit content";
                 $this->view[] = "content/edit";
                 $contentId = getPost("contentId") ?: getGet("id");
-                // $slugError = "";
 
                 $sql = "SELECT * FROM content;";
                 $resultset = $db->executeFetchAll($sql);
-                // $this->data["resultset"] = $resultset;
-                // var_dump($resultset);
-
 
                 if (!is_numeric($contentId)) {
                     die("Not valid for content id.");
@@ -73,41 +68,18 @@ class Content
                         "contentId"
                     ]);
                     foreach ($resultset as $res) {
+                        if (!$params["contentSlug"]) {
+                            $params["contentSlug"] = slugify($params["contentTitle"]);
+                        }
                         if ($params["contentSlug"] == $res->slug) {
-                            header("Location: ?route=edit&id=$contentId");
-                            $slugError = "ERROR";
-
-                            // $slugError = "Slug is already in use";
-                            // echo $slugError;
-                            // exit;
+                            $slug_nr += 1;
+                            $params["contentSlug"] = $params["contentSlug"] . "-" . strval($slug_nr);
                         }
                     }
 
-                    if (!$params["contentSlug"]) {
-                        $params["contentSlug"] = slugify($params["contentTitle"]);
-                    }
-
                     if (!$params["contentPath"]) {
-                        $params["contentPath"] = null;
+                        $params["contentPath"] = $params["contentTitle"];
                     }
-
-                    if ($params["contentFilter"] == "bbcode") {
-                        $params["contentData"] = $filter->bbcode2html($params["contentData"]);
-                    }
-
-                    if ($params["contentFilter"] == "markdown") {
-                        $params["contentData"] = $filter->markdown($params["contentData"]);
-                    }
-
-                    if ($params["contentFilter"] == "link") {
-                        $params["contentData"] = $filter->makeClickable($params["contentData"]);
-                    }
-
-                    if ($params["contentFilter"] == "nl2br") {
-                        $params["contentData"] = $filter->nl2br($params["contentData"]);
-                    }
-
-
 
                     $sql = "UPDATE content SET title=?, path=?, slug=?, data=?, type=?, filter=?, published=? WHERE id = ?;";
                     $db->execute($sql, array_values($params));
@@ -115,14 +87,11 @@ class Content
 
                     exit;
                 }
-                // $slugError = "ERROR";
 
                 $sql = "SELECT * FROM content WHERE id = ?;";
                 $content = $db->executeFetch($sql, [$contentId]);
-                // var_dump($content);
                 $this->data["content"] = $content;
                 $this->data["filter"] = $filter;
-                $this->data["slugError"] = $slugError;
                 break;
 
             case "create":
@@ -227,6 +196,7 @@ class Content
                     }
                     $this->title = $content->title;
                     $this->data["content"] = $content;
+                    $this->data["filter"] = $filter;
                     $this->view[] = "content/blogpost";
                 } else {
                     // Try matching content for type page and its path
@@ -252,6 +222,7 @@ class Content
                     }
                     $this->title = $content->title;
                     $this->data["content"] = $content;
+                    $this->data["filter"] = $filter;
                     $this->view[] = "content/page";
                 }
         };

@@ -1,8 +1,6 @@
 <form method="post">
     <fieldset>
     <legend>Edit</legend>
-    <?=var_dump($slugError); ?>
-    <p><?= $slugError ?></p>
     <input type="hidden" name="contentId" value="<?= esc($content->id) ?>"/>
 
     <p>

@@ -1,7 +1,6 @@
 <?php
-// if ($content->filter == "markdown") {
-//     $content->data = $filter->markdown($content->data);
-// }
+$arrFilter = explode(",", $content->filter);
+$content->data = $filter->parse($content->data, $arrFilter);
 ?>
 
 <article>

@@ -2,11 +2,20 @@
 if (!$resultset) {
     return;
 }
+
+// foreach ($resultset as $row) {
+//     $arrFilter = explode(",", $row->filter);
+// }
 ?>
 
 <article>
 
 <?php foreach ($resultset as $row) : ?>
+<?php
+$arrFilter = explode(",", $row->filter);
+$row->data = $filter->parse($row->data, $arrFilter);
+?>
+
 <section>
     <header>
         <h1><a href="?route=blog/<?= esc($row->slug) ?>"><?= esc($row->title) ?></a></h1>
