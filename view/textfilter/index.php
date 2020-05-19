@@ -16,7 +16,7 @@ $textNewline = "hej\n på\n dig";
 $nl2br = $filter->nl2br($textNewline);
 
 $filters = ["bbcode", "link", "markdown", "nl2br"];
-$text = "[b]BOLD[/b]\n https://dbwebb.se/\n * hej";
+$text = "* [b]BOLD[/b]\n https://dbwebb.se/\n";
 $new_text = $filter->parse($text, $filters);
 ?>
 

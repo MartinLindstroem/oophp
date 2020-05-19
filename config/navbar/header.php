@@ -83,5 +83,10 @@ return [
             "url" => "textfilter",
             "title" => "TextFilter",
         ],
+        [
+            "text" => "Blogg",
+            "url" => "content",
+            "title" => "Content",
+        ],
     ],
 ];
