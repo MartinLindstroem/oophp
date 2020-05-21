@@ -1,7 +1,5 @@
 <?php
-
 namespace Marty\Content;
-
 
 class Content
 {
@@ -9,12 +7,20 @@ class Content
     private $data = [];
     private $title;
 
+    /**
+     * This will suppress Cyclomatic complexity, Excessive method length
+     * and exit expression warnings in this method
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings(PHPMD.ExitExpression)
+     */
     public function handleRoute($route, $db)
     {
         $filter = new \Marty\TextFilter\MyTextFilter();
         $sql = null;
         $resultset = null;
-        $slug_nr = 0;
+        $slugNr = 0;
 
         switch ($route) {
             case "":
@@ -72,8 +78,8 @@ class Content
                             $params["contentSlug"] = slugify($params["contentTitle"]);
                         }
                         if ($params["contentSlug"] == $res->slug) {
-                            $slug_nr += 1;
-                            $params["contentSlug"] = $params["contentSlug"] . "-" . strval($slug_nr);
+                            $slugNr += 1;
+                            $params["contentSlug"] = $params["contentSlug"] . "-" . strval($slugNr);
                         }
                     }
 
@@ -145,7 +151,7 @@ class Content
         FROM content
         WHERE type=?
         ;
-        EOD;
+EOD;
                 $resultset = $db->executeFetchAll($sql, ["page"]);
                 $this->data["resultset"] = $resultset;
                 break;
@@ -163,7 +169,7 @@ class Content
         WHERE type=?
         ORDER BY published DESC
         ;
-        EOD;
+EOD;
                 $resultset = $db->executeFetchAll($sql, ["post"]);
                 $this->data["resultset"] = $resultset;
                 $this->data["filter"] = $filter;
@@ -185,7 +191,7 @@ class Content
             AND published <= NOW()
         ORDER BY published DESC
         ;
-        EOD;
+EOD;
                     $slug = substr($route, 5);
                     $content = $db->executeFetch($sql, [$slug, "post"]);
                     if (!$content) {
@@ -212,7 +218,7 @@ class Content
             AND (deleted IS NULL OR deleted > NOW())
             AND published <= NOW()
         ;
-        EOD;
+EOD;
                     $content = $db->executeFetch($sql, [$route, "page"]);
                     if (!$content) {
                         header("HTTP/1.0 404 Not Found");
@@ -225,7 +231,7 @@ class Content
                     $this->data["filter"] = $filter;
                     $this->view[] = "content/page";
                 }
-        };
+        }
     }
 
     public function getViews()
@@ -242,5 +248,4 @@ class Content
     {
         return $this->title;
     }
-
 }

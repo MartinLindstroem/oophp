@@ -11,10 +11,10 @@ if (!$resultset) {
 <article>
 
 <?php foreach ($resultset as $row) : ?>
-<?php
-$arrFilter = explode(",", $row->filter);
-$row->data = $filter->parse($row->data, $arrFilter);
-?>
+    <?php
+    $arrFilter = explode(",", $row->filter);
+    $row->data = $filter->parse($row->data, $arrFilter);
+    ?>
 
 <section>
     <header>

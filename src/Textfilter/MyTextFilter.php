@@ -1,10 +1,17 @@
 <?php
 namespace Marty\TextFilter;
+
 use \Michelf\Markdown;
+
 // require_once 'vendor/autoload.php';
 
 /**
  * Filter and format text content.
+ *
+ * This will suppress static access
+ * warnings in this method
+ *
+ * @SuppressWarnings(PHPMD.StaticAccess)
  */
 class MyTextFilter
 {
@@ -28,7 +35,8 @@ class MyTextFilter
      *
      * @return string with the formatted text.
      */
-    public function parse($text, $filter) {
+    public function parse($text, $filter)
+    {
         foreach ($this->filters as $key => $val) {
             if (in_array($key, $filter)) {
                 $text = $this->$val($text);
@@ -48,7 +56,8 @@ class MyTextFilter
      *
      * @return string the formatted text.
      */
-    public function bbcode2html($text) {
+    public function bbcode2html($text)
+    {
         $search = [
             '/\[b\](.*?)\[\/b\]/is',
             '/\[i\](.*?)\[\/i\]/is',
@@ -78,7 +87,8 @@ class MyTextFilter
      *
      * @return string with formatted anchors.
      */
-    public function makeClickable($text) {
+    public function makeClickable($text)
+    {
         return preg_replace_callback(
             '#\b(?<![href|src]=[\'"])https?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#',
             function ($matches) {
@@ -97,7 +107,8 @@ class MyTextFilter
      *
      * @return string as the formatted html text.
      */
-    public function markdown($text) {
+    public function markdown($text)
+    {
         return Markdown::defaultTransform($text);
     }
 
@@ -110,7 +121,8 @@ class MyTextFilter
      *
      * @return string the formatted text.
      */
-    public function nl2br($text) {
+    public function nl2br($text)
+    {
         return nl2br($text);
     }
 }

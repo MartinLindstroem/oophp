@@ -1,4 +1,6 @@
 <?php
+namespace Marty\TextFilter;
+
 /**
  * Create routes using $app programming style.
  */
@@ -11,7 +13,9 @@
 $app->router->get("textfilter", function () use ($app) {
     $title = "Textfilter";
 
-    $filter = new Marty\TextFilter\MyTextFilter();
+    // $filter = new Marty\TextFilter\MyTextFilter();
+    $filter = new MyTextFilter();
+
 
 
     $data = [

@@ -1,5 +1,4 @@
 <?php
-
 namespace Marty\Content;
 
 use Anax\Commons\AppInjectableInterface;
@@ -27,18 +26,15 @@ class ContentController implements AppInjectableInterface
      */
     public function indexAction() : object
     {
-        // Deal with the action and return a response.
-        // return "index";
         $title = "Blogg";
         $content = new Content();
-        // var_dump($content);
         // Get incoming
         $route = getGet("route", "");
 
         // General variabels (available to the views)
         $db = $this->app->db;
         $db->connect();
-        $titleExtended = " | My Content Database";
+        // $titleExtended = " | My Content Database";
         $content->handleRoute($route, $db);
         $view = $content->getViews();
         $data = $content->getData();
@@ -54,19 +50,5 @@ class ContentController implements AppInjectableInterface
         return $this->app->page->render([
             "title" => $title,
         ]);
-    }
-
-
-
-    /**
-     * This is the post method action, it handles the
-     * post part of the game
-     * @return object
-     */
-    public function playActionPost() : object
-    {
-
-
-        return $this->app->response->redirect("dice1/play");
     }
 }
